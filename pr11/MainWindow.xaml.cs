@@ -28,6 +28,7 @@ namespace pr11
         public PersonInfo Player = new PersonInfo("Student", 100, 10, 1,0, 0, 5);
         public List<PersonInfo> Enemys = new List<PersonInfo>();
         DispatcherTimer dispatherTimer = new DispatcherTimer();
+        public pr11.PersonInfo Enemy;
 
         public MainWindow()
         {
@@ -39,15 +40,32 @@ namespace pr11
             Enemys.Add(new PersonInfo("Маленький монстр", 100, 20, 1, 0, 40, 20));
 
             dispatherTimer.Tick += AttackPlayer;
-            dispatherTimer.Interval = new System.TimeSpan(0, 0, 10);
+            dispatherTimer.Interval = new TimeSpan(0, 0, 10);
             dispatherTimer.Start();
+
+            SelectEnemy();
         }
 
         private void AttackPlayer(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Player.Health -= Convert.ToInt32(Enemy.Damage * 100f / (100f - Player.Armor));
+            UserInfoPlayr();
         }
 
+        public void SelectEnemy()
+        {
+            int id = new Random().Next(0, Enemys.Count);
+            Enemy = new PersonInfo(
+                Enemys[id].Name,
+                Enemys[id].Health,
+                Enemys[id].Armor,
+                Enemys[id].Level,
+                Enemys[id].Glasses,
+                Enemys[id].Mony,
+                Enemys[id].Damage
+                );
+
+        }
 
          public void UserInfoPlayr()
         {
