@@ -35,9 +35,9 @@ namespace pr11
             InitializeComponent();
             UserInfoPlayr();
 
-            Enemys.Add(new PersonInfo("Большой монстр", 150, 10, 1, 0, 15, 10));
-            Enemys.Add(new PersonInfo("Средний монстр", 120, 15, 1, 0, 30, 15));
-            Enemys.Add(new PersonInfo("Маленький монстр", 100, 20, 1, 0, 40, 20));
+            Enemys.Add(new PersonInfo("Большой монстр", 150, 10, 1, 10, 15, 10));
+            Enemys.Add(new PersonInfo("Средний монстр", 120, 15, 1, 15, 30, 15));
+            Enemys.Add(new PersonInfo("Маленький монстр", 100, 20, 1, 20, 40, 20));
 
             dispatherTimer.Tick += AttackPlayer;
             dispatherTimer.Interval = new TimeSpan(0, 0, 10);
@@ -86,7 +86,19 @@ namespace pr11
 
         private void AttackEnemy(object sender, MouseButtonEventArgs e)
         {
-
+            Enemy.Health -= Convert.ToInt32(Player.Damage * 100f / (100f - Enemy.Armor));
+            if (Enemy.Health <= 0)
+            {
+                Player.Glasses += Enemy.Glasses;
+                Player.Mony += Enemy.Mony;
+                UserInfoPlayr();
+                SelectEnemy();
+            }
+            else
+            {
+                emptyHealth.Content = "Жизненные показатели: " + Enemy.Health;
+                emptyArmor.Content = "Броня: " + Enemy.Armor;
+            }
         }
     }
 }
