@@ -28,7 +28,23 @@ namespace pr11
         {
             InitializeComponent();
         }
-       
+        
+         public void UserInfoPlayr()
+        {
+            if (Player.Glasses > Player.Level * 100)
+            {
+                Player.Level++;
+                Player.Glasses = 0;
+                Player.Health += 100;
+                Player.Damage++;
+                Player.Armor++;
+            }
+            playerHealth.Content = "Жизненные показатели: " + Player.Health;
+            playerArmor.Content = "Броня: " + Player.Armor;
+            playerLevel.Content = "Уровень: " + Player.Level;
+            playerGlasses.Content = "Опыт: " + Player.Glasses;
+            playerMoney.Content = "Монеты: " + Player.Mony;
+        }
 
        
     }
