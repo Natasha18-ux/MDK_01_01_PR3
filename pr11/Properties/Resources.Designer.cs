@@ -63,9 +63,9 @@ namespace pr11.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap для_пр3 {
+        internal static System.Drawing.Bitmap yflj {
             get {
-                object obj = ResourceManager.GetObject("для_пр3", resourceCulture);
+                object obj = ResourceManager.GetObject("yflj", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace pr11.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap лого {
+        internal static System.Drawing.Bitmap для_пр3 {
             get {
-                object obj = ResourceManager.GetObject("лого", resourceCulture);
+                object obj = ResourceManager.GetObject("для_пр3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
