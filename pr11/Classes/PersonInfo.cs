@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace pr11
 {
-    internal class PersonInfo
+    public class PersonInfo
     {
         public string Name { get; set; }
         public int Health { get; set; }

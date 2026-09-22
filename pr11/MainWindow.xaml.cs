@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace pr11
 {
     /// <summary>
@@ -21,6 +23,7 @@ namespace pr11
     /// </summary>
     public partial class MainWindow : Window
     {
+        public PersonInfo Player = new PersonInfo("Student", 100, 10, 1,0, 0, 5);
         public MainWindow()
         {
             InitializeComponent();
