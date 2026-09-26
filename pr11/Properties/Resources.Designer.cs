@@ -73,9 +73,29 @@ namespace pr11.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap большой_монстр {
+            get {
+                object obj = ResourceManager.GetObject("большой_монстр", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap для_пр3 {
             get {
                 object obj = ResourceManager.GetObject("для_пр3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap средний_монстр {
+            get {
+                object obj = ResourceManager.GetObject("средний_монстр", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Collections.Generic;
 using System.Windows.Threading;
 
 
@@ -24,11 +23,13 @@ namespace pr11
     /// </summary>
     public partial class MainWindow : Window
     {
-        
-        public PersonInfo Player = new PersonInfo("Student", 100, 10, 1,0, 0, 5);
+
+        public PersonInfo Player = new PersonInfo("Student", 100, 10, 1, 0, 0, 5);
         public List<PersonInfo> Enemys = new List<PersonInfo>();
         DispatcherTimer dispatherTimer = new DispatcherTimer();
         public pr11.PersonInfo Enemy;
+        Random rnd = new Random();
+
 
         public MainWindow()
         {
@@ -48,13 +49,16 @@ namespace pr11
 
         private void AttackPlayer(object sender, EventArgs e)
         {
+
             Player.Health -= Convert.ToInt32(Enemy.Damage * 100f / (100f - Player.Armor));
             UserInfoPlayr();
+            
         }
 
         public void SelectEnemy()
         {
-            int id = new Random().Next(0, Enemys.Count);
+            
+            int id = rnd.Next(0, Enemys.Count);
             Enemy = new PersonInfo(
                 Enemys[id].Name,
                 Enemys[id].Health,
@@ -64,11 +68,23 @@ namespace pr11
                 Enemys[id].Mony,
                 Enemys[id].Damage
                 );
-
+            switch (Enemy.Name)
+            {
+                case "Большой монстр":
+                    emptyImage.Source = new BitmapImage(new Uri("Resources/большой монстр.png", UriKind.Relative));
+                    break;
+                case "Средний монстр":
+                    emptyImage.Source = new BitmapImage(new Uri("Resources/средний_монстр.png", UriKind.Relative));
+                    break;
+                case "Маленький монстр":
+                    emptyImage.Source = new BitmapImage(new Uri("Resources/yflj.png", UriKind.Relative));
+                    break;
+            }
         }
 
-         public void UserInfoPlayr()
+        public void UserInfoPlayr()
         {
+
             if (Player.Glasses > Player.Level * 100)
             {
                 Player.Level++;
@@ -87,6 +103,7 @@ namespace pr11
         private void AttackEnemy(object sender, MouseButtonEventArgs e)
         {
             Enemy.Health -= Convert.ToInt32(Player.Damage * 100f / (100f - Enemy.Armor));
+            CatchHealth();
             if (Enemy.Health <= 0)
             {
                 Player.Glasses += Enemy.Glasses;
@@ -100,5 +117,29 @@ namespace pr11
                 emptyArmor.Content = "Броня: " + Enemy.Armor;
             }
         }
+        private void CatchHealth()
+        {
+            int verotnost = rnd.Next(100);
+            int otkat = rnd.Next(1, 5);
+            if (verotnost <= 20)
+            {
+                if ((Player.Health - otkat) > 0)
+                {
+                    Player.Health -= otkat;
+                    MessageBox.Show("Неудачный удар: -" + otkat + "HP здоровья");
+                    UserInfoPlayr();
+                    
+                }
+
+            }
+        }
+
+        bool gameOver = false;
+        
+
     }
+
+
 }
+
+
